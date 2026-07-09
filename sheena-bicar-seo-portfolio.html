@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheena Marie Bicar — SEO Strategist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14171C;
+    --ink-soft:#2A2F38;
+    --paper:#F5F3ED;
+    --paper-dim:#EBE8DF;
+    --white:#FFFFFF;
+    --slate:#565C66;
+    --slate-light:#8A8F99;
+    --signal:#2F7A5C;
+    --signal-soft:#E4EFE9;
+    --amber:#D98E2B;
+    --line:#DEDBD1;
+    --line-dark:#3A3F49;
+    --radius:14px;
+    --maxw:1100px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk',sans-serif;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  section{padding:96px 0;}
+  @media (max-width:640px){ section{padding:64px 0;} }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--signal);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:20px; height:1px;
+    background:var(--signal);
+    display:inline-block;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(245,243,237,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .brand{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600; font-size:16.5px;
+    display:flex; align-items:center; gap:9px;
+  }
+  .brand-mark{
+    width:26px; height:26px; border-radius:7px;
+    background:var(--ink);
+    color:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px; font-weight:600;
+  }
+  .navlinks{display:flex; gap:28px; font-size:14.5px; font-weight:500;}
+  .navlinks a{text-decoration:none; color:var(--slate); transition:color .15s;}
+  .navlinks a:hover{color:var(--ink);}
+  @media (max-width:700px){ .navlinks{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:76px 0 90px;}
+  .hero-top{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:start;
+  }
+  @media (max-width:880px){ .hero-top{grid-template-columns:1fr; gap:40px;} }
+
+  .hero h1{
+    font-size:clamp(32px,4.6vw,50px);
+    font-weight:600;
+    line-height:1.08;
+    max-width:14ch;
+  }
+  .hero .lede{
+    margin-top:20px;
+    font-size:17px;
+    color:var(--slate);
+    max-width:44ch;
+  }
+  .hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn{
+    font-family:'Inter',sans-serif;
+    font-weight:600; font-size:14.5px;
+    padding:13px 22px;
+    border-radius:9px;
+    text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn-primary{background:var(--ink); color:var(--paper);}
+  .btn-primary:hover{transform:translateY(-1px); background:var(--ink-soft);}
+  .btn-ghost{background:transparent; color:var(--ink); border-color:var(--line);}
+  .btn-ghost:hover{border-color:var(--ink); transform:translateY(-1px);}
+
+  .stat-row{
+    display:flex; gap:28px; margin-top:44px; flex-wrap:wrap;
+  }
+  .stat-row .stat b{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:22px; display:block;
+  }
+  .stat-row .stat span{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px; color:var(--slate-light);
+    text-transform:uppercase; letter-spacing:.06em;
+  }
+
+  /* --- the SERP mock, signature element --- */
+  .serp{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:0 18px 40px -22px rgba(20,23,28,0.28);
+  }
+  .serp-bar{
+    display:flex; align-items:center; gap:10px;
+    padding:13px 16px;
+    border-bottom:1px solid var(--line);
+    background:var(--paper-dim);
+  }
+  .serp-bar .dots{display:flex; gap:6px;}
+  .serp-bar .dots span{width:8px; height:8px; border-radius:50%; background:var(--line);}
+  .serp-search{
+    flex:1;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:6px 14px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--slate);
+    display:flex; align-items:center; gap:8px;
+  }
+  .serp-body{padding:24px 22px 26px;}
+  .serp-count{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px; color:var(--slate-light);
+    margin-bottom:16px;
+  }
+  .serp-result .breadcrumb{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    color:var(--signal);
+    margin-bottom:6px;
+  }
+  .serp-result h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:19px; font-weight:600;
+    color:var(--ink);
+    margin-bottom:8px;
+    line-height:1.32;
+  }
+  .serp-result p{
+    margin:0; font-size:14px; color:var(--slate);
+  }
+  .serp-rating{
+    margin-top:14px; display:flex; align-items:center; gap:8px;
+    font-size:13px; color:var(--slate);
+  }
+  .serp-rating .stars{color:var(--amber); letter-spacing:1px;}
+  .serp-chip-row{
+    display:flex; gap:8px; flex-wrap:wrap; margin-top:18px;
+    padding-top:18px; border-top:1px dashed var(--line);
+  }
+  .serp-chip{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px; padding:5px 10px;
+    background:var(--paper); border:1px solid var(--line);
+    border-radius:20px; color:var(--slate);
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section-head{margin-bottom:44px; max-width:60ch;}
+  .section-head h2{font-size:clamp(24px,3vw,32px); font-weight:600;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;
+  }
+  @media (max-width:800px){ .about-grid{grid-template-columns:1fr;} }
+  .about-grid p{color:var(--slate); font-size:16px;}
+  .skill-list{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:12px 20px;}
+  .skill-list li{
+    display:flex; align-items:center; gap:10px;
+    font-size:14.5px; font-weight:500;
+  }
+  .skill-list li::before{
+    content:"";
+    width:7px; height:7px; border-radius:2px;
+    background:var(--signal);
+    flex-shrink:0;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .card-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  @media (max-width:920px){ .card-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .card-grid{grid-template-columns:1fr;} }
+  .svc-card{
+    background:var(--white); border:1px solid var(--line);
+    border-radius:var(--radius); padding:24px 20px;
+  }
+  .svc-card .tag{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px;
+    color:var(--slate-light); text-transform:uppercase; letter-spacing:.08em;
+    margin-bottom:14px; display:block;
+  }
+  .svc-card .icon{font-size:22px; margin-bottom:10px; display:block;}
+  .svc-card h3{font-size:16.5px; font-weight:600; margin-bottom:8px;}
+  .svc-card p{font-size:13.5px; color:var(--slate); margin:0;}
+
+  /* ---------- PROCESS ---------- */
+  .process{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:0; position:relative;
+  }
+  @media (max-width:900px){ .process{grid-template-columns:1fr; gap:0;} }
+  .p-step{
+    position:relative; padding:0 16px 0 0; text-align:left;
+  }
+  @media (max-width:900px){
+    .p-step{padding:0 0 32px 28px; border-left:2px solid var(--line); margin-left:6px;}
+    .p-step:last-child{padding-bottom:0;}
+  }
+  .p-step .num{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--signal);
+    display:block; margin-bottom:10px;
+  }
+  .p-step .icon{font-size:20px; display:block; margin-bottom:10px;}
+  .p-step h3{font-size:15px; font-weight:600; margin-bottom:6px;}
+  .p-step p{font-size:13px; color:var(--slate); margin:0;}
+  .process-line{
+    position:absolute; top:9px; left:0; right:0; height:1px;
+    background:var(--line); z-index:0;
+  }
+  @media (max-width:900px){ .process-line{display:none;} }
+  .p-step-inner{position:relative; z-index:1; background:var(--paper); padding-right:20px;}
+
+  /* ---------- PROJECTS ---------- */
+  .proj-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media (max-width:900px){ .proj-grid{grid-template-columns:1fr;} }
+  .proj-card{
+    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 24px; display:flex; flex-direction:column; gap:18px;
+  }
+  .proj-card .proj-head{display:flex; align-items:center; gap:10px;}
+  .proj-card .proj-icon{font-size:22px;}
+  .proj-card h3{font-size:17px; font-weight:600;}
+  .proj-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:7px;}
+  .proj-list li{
+    font-size:13.5px; color:var(--slate); display:flex; gap:8px; align-items:flex-start;
+  }
+  .proj-list li::before{content:"✓"; color:var(--signal); font-weight:600; flex-shrink:0;}
+  .proj-result{
+    border-top:1px dashed var(--line); padding-top:16px; margin-top:auto;
+  }
+  .proj-result .r-label{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--slate-light);
+    text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px; display:block;
+  }
+  .sparkline{display:flex; align-items:flex-end; gap:4px; height:36px;}
+  .sparkline i{
+    display:block; width:7px; border-radius:2px 2px 0 0;
+    background:var(--paper-dim);
+    transform:scaleY(0); transform-origin:bottom;
+    transition:transform .7s cubic-bezier(.2,.8,.2,1);
+  }
+  .sparkline.in-view i{transform:scaleY(1);}
+  .sparkline i:last-child{background:var(--signal);}
+  .proj-result .r-text{font-size:13px; color:var(--ink); font-weight:600; margin-top:8px;}
+
+  /* ---------- TOOLS ---------- */
+  .tool-grid{display:flex; flex-wrap:wrap; gap:10px;}
+  .tool-chip{
+    font-family:'IBM Plex Mono',monospace; font-size:13px;
+    padding:9px 16px; border:1px solid var(--line); border-radius:8px;
+    background:var(--white); color:var(--ink-soft);
+  }
+
+  /* ---------- EXPERIENCE ---------- */
+  .timeline{display:flex; flex-direction:column;}
+  .t-row{
+    display:grid; grid-template-columns:140px 1fr; gap:24px;
+    padding:22px 0; border-top:1px solid var(--line);
+  }
+  .timeline .t-row:last-child{border-bottom:1px solid var(--line);}
+  @media (max-width:600px){ .t-row{grid-template-columns:1fr; gap:6px;} }
+  .t-row .years{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--slate-light);}
+  .t-row h3{font-size:16.5px; font-weight:600; margin-bottom:4px;}
+  .t-row p{margin:0; font-size:13.5px; color:var(--slate);}
+
+  /* ---------- CONTACT ---------- */
+  .contact-box{
+    background:var(--ink); color:var(--paper);
+    border-radius:20px; padding:56px 44px;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;
+  }
+  @media (max-width:800px){ .contact-box{grid-template-columns:1fr; padding:40px 26px;} }
+  .contact-box h2{font-size:clamp(24px,3.4vw,34px); font-weight:600; max-width:16ch; color:var(--paper);}
+  .contact-box .sub{color:#B9BDC6; margin-top:14px; font-size:15px; max-width:38ch;}
+  .fake-search{
+    margin-top:26px;
+    background:var(--ink-soft); border:1px solid var(--line-dark);
+    border-radius:12px; padding:14px 16px;
+    display:flex; align-items:center; gap:10px;
+    font-family:'IBM Plex Mono',monospace; font-size:13.5px; color:#C9CDD4;
+  }
+  .contact-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px;}
+  .contact-list li{display:flex; align-items:center; gap:12px; font-size:14.5px;}
+  .contact-list a{text-decoration:none; color:var(--paper); border-bottom:1px solid var(--line-dark); padding-bottom:1px;}
+  .contact-list a:hover{border-color:var(--paper);}
+  .c-icon{
+    width:32px; height:32px; border-radius:8px; background:var(--ink-soft);
+    border:1px solid var(--line-dark);
+    display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0;
+  }
+
+  footer{
+    text-align:center; padding:32px 0 40px;
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--slate-light);
+  }
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in-view{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="brand-mark">SB</span> Sheena Marie Bicar</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-top">
+    <div>
+      <div class="eyebrow">SEO Strategist</div>
+      <h1>Rankings, traffic, and revenue — built on the technical details others skip.</h1>
+      <p class="lede">I help agencies and growing businesses turn messy websites into search-ready ones, through technical audits, local SEO, and content strategy that compounds.</p>
+      <div class="hero-ctas">
+        <a href="https://drive.google.com/drive/folders/17ZIsaxsH9E38fZ-U-7IQwGKAM46zCd9_" class="btn btn-primary" target="_blank" rel="noopener">View my work</a>
+        <a href="https://drive.google.com/file/d/1pnq2oDE-pJy8oQjgx0v5xFw3422wTFcY/view?usp=sharing" class="btn btn-ghost" target="_blank" rel="noopener">Download resume ↓</a>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b>4+</b><span>Years experience</span></div>
+        <div class="stat"><b>100+</b><span>SEO projects</span></div>
+        <div class="stat"><b>2</b><span>Agencies served</span></div>
+      </div>
+    </div>
+
+    <div class="serp reveal">
+      <div class="serp-bar">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <div class="serp-search">🔍 seo strategist for growing businesses</div>
+      </div>
+      <div class="serp-body">
+        <div class="serp-count">About 1 result (0.31 seconds)</div>
+        <div class="serp-result">
+          <div class="breadcrumb">sheenabicar.com › about</div>
+          <h3>Sheena Marie Bicar — SEO Strategist</h3>
+          <p>Technical SEO, local SEO, and content strategy for businesses that want to rank on facts, not guesswork. 4+ years across agency and in-house teams.</p>
+          <div class="serp-rating">
+            <span class="stars">★★★★★</span> Trusted across 100+ site audits and campaigns
+          </div>
+        </div>
+        <div class="serp-chip-row">
+          <span class="serp-chip">Technical SEO</span>
+          <span class="serp-chip">Local SEO</span>
+          <span class="serp-chip">Content SEO</span>
+          <span class="serp-chip">GA4</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <div class="eyebrow">About</div>
+        <h2>I fix what's holding your site back, then build the strategy to move it forward.</h2>
+        <p style="margin-top:20px;">I'm an SEO specialist with over four years of experience helping agencies and businesses improve their online visibility. I like the parts of SEO most people avoid — crawl budgets, redirect chains, schema — because that's usually where the easiest wins are hiding.</p>
+        <p>Beyond the technical side, I build the keyword research, content, and local SEO strategy that turns a healthy site into one that actually ranks and converts.</p>
+      </div>
+      <div class="reveal">
+        <ul class="skill-list">
+          <li>Technical SEO</li>
+          <li>Local SEO</li>
+          <li>On-page Optimization</li>
+          <li>Keyword Research</li>
+          <li>Content Strategy</li>
+          <li>Website Audits</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--paper-dim);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Services</div>
+      <h2>Four ways to move the needle</h2>
+    </div>
+    <div class="card-grid">
+      <div class="svc-card reveal">
+        <span class="tag">Service 01</span>
+        <span class="icon">🔍</span>
+        <h3>Technical SEO</h3>
+        <p>Full site audits covering crawlability, indexation, site speed, and Core Web Vitals.</p>
+      </div>
+      <div class="svc-card reveal">
+        <span class="tag">Service 02</span>
+        <span class="icon">📍</span>
+        <h3>Local SEO</h3>
+        <p>Google Business Profile optimization, citations, and local pack visibility.</p>
+      </div>
+      <div class="svc-card reveal">
+        <span class="tag">Service 03</span>
+        <span class="icon">✍️</span>
+        <h3>Content SEO</h3>
+        <p>On-page optimization and content structured around what people actually search.</p>
+      </div>
+      <div class="svc-card reveal">
+        <span class="tag">Service 04</span>
+        <span class="icon">⚙️</span>
+        <h3>SEO Strategy</h3>
+        <p>Growth roadmaps that connect audits, content, and reporting into one plan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Process</div>
+      <h2>How a project runs, start to finish</h2>
+    </div>
+    <div class="process">
+      <div class="process-line"></div>
+      <div class="p-step"><div class="p-step-inner">
+        <span class="num">01</span><span class="icon">🔎</span>
+        <h3>Website audit</h3><p>Full technical and on-page review.</p>
+      </div></div>
+      <div class="p-step"><div class="p-step-inner">
+        <span class="num">02</span><span class="icon">🔑</span>
+        <h3>Keyword research</h3><p>Find what your customers search for.</p>
+      </div></div>
+      <div class="p-step"><div class="p-step-inner">
+        <span class="num">03</span><span class="icon">⚙️</span>
+        <h3>Technical fixes</h3><p>Resolve crawl, speed, and structure issues.</p>
+      </div></div>
+      <div class="p-step"><div class="p-step-inner">
+        <span class="num">04</span><span class="icon">✍️</span>
+        <h3>Content improvements</h3><p>Rewrite and structure pages to rank.</p>
+      </div></div>
+      <div class="p-step"><div class="p-step-inner">
+        <span class="num">05</span><span class="icon">📈</span>
+        <h3>Reporting & growth</h3><p>Track rankings and iterate monthly.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="work" style="background:var(--paper-dim);">
+  <div class="wrap">
+    <div class="section-head" style="display:flex; align-items:flex-end; justify-content:space-between; gap:20px; flex-wrap:wrap;">
+      <div>
+        <div class="eyebrow">Featured Projects</div>
+        <h2>Recent results</h2>
+      </div>
+      <a href="https://drive.google.com/drive/folders/17ZIsaxsH9E38fZ-U-7IQwGKAM46zCd9_" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-bottom:2px;">See full portfolio ↗</a>
+    </div>
+    <div class="proj-grid">
+
+      <div class="proj-card reveal">
+        <div class="proj-head"><span class="proj-icon">🦷</span><h3>Dental SEO</h3></div>
+        <ul class="proj-list">
+          <li>Technical audit</li>
+          <li>Local SEO</li>
+          <li>Internal linking</li>
+          <li>Schema markup</li>
+        </ul>
+        <div class="proj-result">
+          <span class="r-label">Result</span>
+          <div class="sparkline"><i style="height:30%"></i><i style="height:40%"></i><i style="height:38%"></i><i style="height:55%"></i><i style="height:70%"></i><i style="height:100%"></i></div>
+          <div class="r-text">Organic visibility, rankings, and indexed pages all up</div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-head"><span class="proj-icon">🏢</span><h3>Local Business SEO</h3></div>
+        <ul class="proj-list">
+          <li>GBP optimization</li>
+          <li>Citation building</li>
+          <li>On-page SEO</li>
+        </ul>
+        <div class="proj-result">
+          <span class="r-label">Result</span>
+          <div class="sparkline"><i style="height:35%"></i><i style="height:32%"></i><i style="height:50%"></i><i style="height:62%"></i><i style="height:78%"></i><i style="height:100%"></i></div>
+          <div class="r-text">Local pack rankings improved</div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-head"><span class="proj-icon">💻</span><h3>Technical SEO</h3></div>
+        <ul class="proj-list">
+          <li>Crawl analysis</li>
+          <li>Redirect fixes</li>
+          <li>Core Web Vitals</li>
+        </ul>
+        <div class="proj-result">
+          <span class="r-label">Result</span>
+          <div class="sparkline"><i style="height:45%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:58%"></i><i style="height:82%"></i><i style="height:100%"></i></div>
+          <div class="r-text">Site health score improved</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Tools</div>
+      <h2>What I work with day to day</h2>
+    </div>
+    <div class="tool-grid">
+      <span class="tool-chip">Google Analytics 4</span>
+      <span class="tool-chip">Google Search Console</span>
+      <span class="tool-chip">SEMrush</span>
+      <span class="tool-chip">Screaming Frog</span>
+      <span class="tool-chip">WordPress</span>
+      <span class="tool-chip">Rank Math</span>
+      <span class="tool-chip">Yext</span>
+      <span class="tool-chip">Canva</span>
+      <span class="tool-chip">ChatGPT</span>
+      <span class="tool-chip">Claude</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background:var(--paper-dim);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Experience</div>
+      <h2>Work history</h2>
+    </div>
+    <div class="timeline">
+      <div class="t-row">
+        <span class="years">2024 — 2025</span>
+        <div><h3>SEO Specialist</h3><p>Keen Insites US</p></div>
+      </div>
+      <div class="t-row">
+        <span class="years">2021 — 2024</span>
+        <div><h3>SEO Specialist</h3><p>411 Locals</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <div>
+        <h2>Let's grow your organic traffic.</h2>
+        <p class="sub">Open to new SEO projects and full-time roles. Reach out and I'll get back to you within a day or two.</p>
+        <div class="fake-search">🔍 Searching for an SEO strategist? You just found one.</div>
+      </div>
+      <ul class="contact-list">
+        <li><span class="c-icon">✉️</span> <a href="mailto:sheenamarie91195@gmail.com">sheenamarie91195@gmail.com</a></li>
+        <li><span class="c-icon">📍</span> Tacloban City, Philippines</li>
+        <li><span class="c-icon">🔗</span> <a href="https://www.linkedin.com/in/sheenameme/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><span class="c-icon">📄</span> <a href="https://drive.google.com/file/d/1pnq2oDE-pJy8oQjgx0v5xFw3422wTFcY/view?usp=sharing" target="_blank" rel="noopener">Download resume</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Sheena Marie Bicar — SEO Strategist</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal, .sparkline').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
